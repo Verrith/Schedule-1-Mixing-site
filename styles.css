@@ -5,3 +5,4 @@
 .game-logo img{width:162px;max-height:58px;filter:drop-shadow(0 2px 2px #080a07)}
 .game-logo img{display:none}
 .game-logo::before{content:'';display:block;width:162px;height:58px;background:url('https://static.wikia.nocookie.net/schedule-1/images/e/e6/Site-logo.png/revision/latest?cb=20250326184251') center/contain no-repeat}
+.game-logo::before{background-image:url('assets/ingredients/schedule-1-logo.webp')}

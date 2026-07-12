@@ -40,3 +40,10 @@ const wikiIngredientImages={
 ingredients.forEach(ingredient=>{ingredient.image=wikiIngredientImages[ingredient.name]||ingredient.image});
 drawCatalog();
 render();
+// Local copies prevent the wiki host from blocking images on GitHub Pages.
+const localIngredientImages={
+  Cuke:'assets/ingredients/cuke.webp',Banana:'assets/ingredients/banana.webp',Paracetamol:'assets/ingredients/paracetamol.webp',Donut:'assets/ingredients/donut.webp',Viagor:'assets/ingredients/viagor.webp','Mouth Wash':'assets/ingredients/mouth-wash.webp','Flu Medicine':'assets/ingredients/flu-medicine.webp',Gasoline:'assets/ingredients/gasoline.webp','Energy Drink':'assets/ingredients/energy-drink.webp','Motor Oil':'assets/ingredients/motor-oil.webp','Mega Bean':'assets/ingredients/mega-bean.webp',Chili:'assets/ingredients/chili.webp',Battery:'assets/ingredients/battery.webp',Iodine:'assets/ingredients/iodine.webp',Addy:'assets/ingredients/addy.webp'
+};
+ingredients.forEach(ingredient=>{if(localIngredientImages[ingredient.name])ingredient.image=localIngredientImages[ingredient.name]});
+drawCatalog();
+render();
