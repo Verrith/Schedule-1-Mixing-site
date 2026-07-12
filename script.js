@@ -70,7 +70,7 @@ const wikiIngredientImages = {
   Battery: 'assets/ingredients/battery.webp',
   Iodine: 'assets/ingredients/iodine.webp',
   Addy: 'assets/ingredients/addy.webp',
-  'Horse Semen': 'assets/ingredients/horsesemen.webp' // Remplacez par le nom exact du fichier sur le wiki
+  'Horse Semen': 'assets/ingredients/horse-semen.webp' // Remplacez par le nom exact du fichier sur le wiki
 };
 ingredients.forEach(ingredient=>{ingredient.image=wikiIngredientImages[ingredient.name]||ingredient.image});
 drawCatalog();
