@@ -1,7 +1,41 @@
 const icon = file => `https://schedule-1.fandom.com/wiki/Special:FilePath/${encodeURIComponent(file)}?width=96`;
 const drugs = [
-  ['OG Kush','Calming','OGKush Icon.png'],['Sour Diesel','Refreshing','SourDiesel Icon.png'],['Green Crack','Energizing','GreenCrack Icon.png'],['Granddaddy Purple','Sedating','GranddaddyPurple Icon.png'],['Methamphetamine',null,'Meth Icon.png'],['Shrooms',null,'Shroom Icon.png'],['Cocaine',null,'Cocaine Icon.png']
-].map(([name,effect,file])=>({name,effect,image:icon(file)}));
+  {
+    name: "OG Kush",
+    effect: "Calming",
+    image: "assets/drugs/OGKush_Icon.webp"
+  },
+  {
+    name: "Sour Diesel",
+    effect: "Refreshing",
+    image: "assets/drugs/SourDiesel_Icon.webp"
+  },
+  {
+    name: "Green Crack",
+    effect: "Energizing",
+    image: "assets/drugs/GreenCrack_Icon.webp"
+  },
+  {
+    name: "Granddaddy Purple",
+    effect: "Sedating",
+    image: "assets/drugs/GranddaddyPurple_Icon.webp"
+  },
+  {
+    name: "Methamphetamine",
+    effect: null,
+    image: "assets/drugs/Meth_Icon.webp"
+  },
+  {
+    name: "Shrooms",
+    effect: null,
+    image: "assets/drugs/Shroom_Icon.webp"
+  },
+  {
+    name: "Cocaine",
+    effect: null,
+    image: "assets/drugs/Cocaine_Icon.webp"
+  }
+];
 const data=[
 ['Cuke','Energizing',{Euphoric:'Laxative',Foggy:'Cyclopean',Gingeritis:'Thought-Provoking',Munchies:'Athletic',Slippery:'Munchies',Sneaky:'Paranoia',Toxic:'Euphoric'}],['Banana','Gingeritis',{Calming:'Sneaky',Cyclopean:'Thought-Provoking',Disorienting:'Focused',Energizing:'Thought-Provoking',Focused:'Seizure-Inducing','Long Faced':'Refreshing',Paranoia:'Jennerising',Smelly:'Anti-Gravity',Toxic:'Smelly'}],['Paracetamol','Sneaky',{Calming:'Slippery',Electrifying:'Athletic',Energizing:'Paranoia',Focused:'Gingeritis',Foggy:'Calming',Glowing:'Toxic',Munchies:'Anti-Gravity',Paranoia:'Balding',Spicy:'Bright-Eyed',Toxic:'Tropic Thunder'}],['Donut','Calorie-Dense',{'Anti-Gravity':'Slippery',Balding:'Sneaky','Calorie-Dense':'Explosive',Focused:'Euphoric',Jennerising:'Gingeritis',Munchies:'Calming',Shrinking:'Energizing'}],['Viagor','Tropic Thunder',{Athletic:'Sneaky',Disorienting:'Toxic',Euphoric:'Bright-Eyed',Laxative:'Calming',Shrinking:'Gingeritis'}],['Mouth Wash','Balding',{Calming:'Anti-Gravity','Calorie-Dense':'Sneaky',Explosive:'Sedating',Focused:'Jennerising'}],['Flu Medicine','Sedating',{Athletic:'Munchies',Calming:'Bright-Eyed',Cyclopean:'Foggy',Electrifying:'Refreshing',Euphoric:'Toxic',Focused:'Calming',Laxative:'Euphoric',Munchies:'Slippery',Shrinking:'Paranoia','Thought-Provoking':'Gingeritis'}],['Gasoline','Toxic',{Disorienting:'Glowing',Electrifying:'Disorienting',Energizing:'Euphoric',Euphoric:'Spicy',Gingeritis:'Smelly',Jennerising:'Sneaky',Laxative:'Foggy',Munchies:'Sedating',Paranoia:'Calming',Shrinking:'Focused',Sneaky:'Tropic Thunder'}],['Energy Drink','Athletic',{Disorienting:'Electrifying',Euphoric:'Energizing',Focused:'Shrinking',Foggy:'Laxative',Glowing:'Disorienting',Schizophrenic:'Balding',Sedating:'Munchies',Spicy:'Euphoric','Tropic Thunder':'Sneaky'}],['Motor Oil','Slippery',{Energizing:'Munchies',Euphoric:'Sedating',Foggy:'Toxic',Munchies:'Schizophrenic',Paranoia:'Anti-Gravity'}],['Mega Bean','Foggy',{Athletic:'Laxative',Calming:'Glowing',Energizing:'Cyclopean',Focused:'Disorienting',Jennerising:'Paranoia','Seizure-Inducing':'Focused',Shrinking:'Electrifying',Slippery:'Toxic',Sneaky:'Calming','Thought-Provoking':'Energizing'}],['Chili','Spicy',{'Anti-Gravity':'Tropic Thunder',Athletic:'Euphoric',Laxative:'Long Faced',Munchies:'Toxic',Shrinking:'Refreshing',Sneaky:'Bright-Eyed'}],['Battery','Bright-Eyed',{Cyclopean:'Glowing',Electrifying:'Euphoric',Euphoric:'Zombifying',Laxative:'Calorie-Dense',Munchies:'Tropic Thunder',Shrinking:'Munchies'}],['Iodine','Jennerising',{Calming:'Balding','Calorie-Dense':'Gingeritis',Euphoric:'Seizure-Inducing',Foggy:'Paranoia',Refreshing:'Thought-Provoking',Toxic:'Sneaky'}],['Addy','Thought-Provoking',{Explosive:'Euphoric',Foggy:'Energizing',Glowing:'Refreshing','Long Faced':'Electrifying',Sedating:'Gingeritis'}],['Horse Semen','Long Faced',{'Anti-Gravity':'Calming',Gingeritis:'Refreshing','Thought-Provoking':'Electrifying','Seizure-Inducing':'Energizing'}]
 ];
@@ -19,23 +53,24 @@ function render(){drawDrugs();const {active,events}=calculate(),amount=mix.lengt
 drawCatalog();render();
 
 // Exact image files used by the Ingredients page on the Schedule 1 Wiki.
-const wikiIngredientImages={
-  Cuke:'https://static.wikia.nocookie.net/schedule-1/images/a/ae/Cuke_Icon.png/revision/latest/scale-to-width-down/64?cb=20250616234625',
-  Banana:'https://static.wikia.nocookie.net/schedule-1/images/3/31/Banana_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212129',
-  Paracetamol:'https://static.wikia.nocookie.net/schedule-1/images/2/23/Paracetamol_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212147',
-  Donut:'https://static.wikia.nocookie.net/schedule-1/images/0/05/Donut_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212203',
-  Viagor:'https://static.wikia.nocookie.net/schedule-1/images/7/72/Viagra_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212258',
-  'Mouth Wash':'https://static.wikia.nocookie.net/schedule-1/images/d/d5/Mouth_Wash_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212333',
-  'Flu Medicine':'https://static.wikia.nocookie.net/schedule-1/images/6/62/Flu_Medicine_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212355',
-  Gasoline:'https://static.wikia.nocookie.net/schedule-1/images/8/87/Gasoline_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212411',
-  'Energy Drink':'https://static.wikia.nocookie.net/schedule-1/images/6/6d/Energy_Drink_Icon.png/revision/latest/scale-to-width-down/64?cb=20250420141017',
-  'Motor Oil':'https://static.wikia.nocookie.net/schedule-1/images/1/17/Motor_Oil_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212450',
-  'Mega Bean':'https://static.wikia.nocookie.net/schedule-1/images/3/3f/Mega_Bean_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212514',
-  Chili:'https://static.wikia.nocookie.net/schedule-1/images/8/8b/Chili_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212531',
-  Battery:'https://static.wikia.nocookie.net/schedule-1/images/4/40/Battery_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212545',
-  Iodine:'https://static.wikia.nocookie.net/schedule-1/images/c/c0/Iodine_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212603',
-  Addy:'https://static.wikia.nocookie.net/schedule-1/images/d/d8/Addy_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212619',
-  'Horse Semen':'https://static.wikia.nocookie.net/schedule-1/images/f/f1/Horsejuice%28blurred%29.png/revision/latest/scale-to-width-down/64?cb=20250420151404'
+// Correction de wikiIngredientImages (supprimer les backslashes)
+const wikiIngredientImages = {
+  Cuke: 'Image/Cuke_Icon.webp',
+  Banana: 'Image/Banana_Icon.webp',
+  Paracetamol: 'Image/Paracetamol_Icon.webp',
+  Donut: 'Image/Donut_Icon.webp',
+  Viagor: 'Image/Viagra_Icon.webp',
+  'Mouth Wash': 'Image/Mouth_Wash_Icon.webp',
+  'Flu Medicine': 'Image/Flu_Medicine_Icon.webp',
+  Gasoline: 'Image/Gasoline_Icon.webp',
+  'Energy Drink': 'Image/Energy_Drink_Icon.webp',
+  'Motor Oil': 'Image/Motor_Oil_Icon.webp',
+  'Mega Bean': 'Image/Mega_Bean_Icon.webp',
+  Chili: 'Image/Chili_Icon.webp',
+  Battery: 'Image/Battery_Icon.webp',
+  Iodine: 'Image/Iodine_Icon.webp',
+  Addy: 'Image/Addy_Icon.webp',
+  'Horse Semen': 'Image/Horsejuice29.webp' // Remplacez par le nom exact du fichier sur le wiki
 };
 ingredients.forEach(ingredient=>{ingredient.image=wikiIngredientImages[ingredient.name]||ingredient.image});
 drawCatalog();
