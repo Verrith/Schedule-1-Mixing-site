@@ -3,37 +3,37 @@ const drugs = [
   {
     name: "OG Kush",
     effect: "Calming",
-    image: "assets/drugs/OGKush_Icon.webp"
+    image: "assets/drugs/og-kush.webp"
   },
   {
     name: "Sour Diesel",
     effect: "Refreshing",
-    image: "assets/drugs/SourDiesel_Icon.webp"
+    image: "assets/drugs/sour-diesel.webp"
   },
   {
     name: "Green Crack",
     effect: "Energizing",
-    image: "assets/drugs/GreenCrack_Icon.webp"
+    image: "assets/drugs/green-crack.webp"
   },
   {
     name: "Granddaddy Purple",
     effect: "Sedating",
-    image: "assets/drugs/GranddaddyPurple_Icon.webp"
+    image: "assets/drugs/granddaddy-purple.webp"
   },
   {
     name: "Methamphetamine",
     effect: null,
-    image: "assets/drugs/Meth_Icon.webp"
+    image: "assets/drugs/meth.webp"
   },
   {
     name: "Shrooms",
     effect: null,
-    image: "assets/drugs/Shroom_Icon.webp"
+    image: "assets/drugs/shrooms.webp"
   },
   {
     name: "Cocaine",
     effect: null,
-    image: "assets/drugs/Cocaine_Icon.webp"
+    image: "assets/drugs/cocaine.webp"
   }
 ];
 const data=[
@@ -55,22 +55,22 @@ drawCatalog();render();
 // Exact image files used by the Ingredients page on the Schedule 1 Wiki.
 // Correction de wikiIngredientImages (supprimer les backslashes)
 const wikiIngredientImages = {
-  Cuke: 'Image/Cuke_Icon.webp',
-  Banana: 'Image/Banana_Icon.webp',
-  Paracetamol: 'Image/Paracetamol_Icon.webp',
-  Donut: 'Image/Donut_Icon.webp',
-  Viagor: 'Image/Viagra_Icon.webp',
-  'Mouth Wash': 'Image/Mouth_Wash_Icon.webp',
-  'Flu Medicine': 'Image/Flu_Medicine_Icon.webp',
-  Gasoline: 'Image/Gasoline_Icon.webp',
-  'Energy Drink': 'Image/Energy_Drink_Icon.webp',
-  'Motor Oil': 'Image/Motor_Oil_Icon.webp',
-  'Mega Bean': 'Image/Mega_Bean_Icon.webp',
-  Chili: 'Image/Chili_Icon.webp',
-  Battery: 'Image/Battery_Icon.webp',
-  Iodine: 'Image/Iodine_Icon.webp',
-  Addy: 'Image/Addy_Icon.webp',
-  'Horse Semen': 'Image/Horsejuice29.webp' // Remplacez par le nom exact du fichier sur le wiki
+  Cuke: 'assets/ingredients/cuke.webp',
+  Banana: 'assets/ingredients/banana.webp',
+  Paracetamol: 'assets/ingredients/paracetamol.webp',
+  Donut: 'assets/ingredients/donut.webp',
+  Viagor: 'assets/ingredients/viagor.webp',
+  'Mouth Wash': 'assets/ingredients/mouth-wash.webp',
+  'Flu Medicine': 'assets/ingredients/flu-medicine.webp',
+  Gasoline: 'assets/ingredients/gasoline.webp',
+  'Energy Drink': 'assets/ingredients/energy-drink.webp',
+  'Motor Oil': 'assets/ingredients/motor-oil.webp',
+  'Mega Bean': 'assets/ingredients/mega-bean.webp',
+  Chili: 'assets/ingredients/chili.webp',
+  Battery: 'assets/ingredients/battery.webp',
+  Iodine: 'assets/ingredients/iodine.webp',
+  Addy: 'assets/ingredients/addy.webp',
+  'Horse Semen': 'assets/ingredients/horsejuice.webp' // Remplacez par le nom exact du fichier sur le wiki
 };
 ingredients.forEach(ingredient=>{ingredient.image=wikiIngredientImages[ingredient.name]||ingredient.image});
 drawCatalog();
