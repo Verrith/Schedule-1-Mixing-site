@@ -17,3 +17,26 @@ grid.addEventListener('click',e=>{const b=e.target.closest('[data-name]');if(!b)
 
 function render(){drawDrugs();const {active,events}=calculate(),amount=mix.length*12;$('#ingredientTotal').textContent=mix.length;$('#productName').textContent=selectedDrug?selectedDrug.name:'No product selected';$('#baseEffect').textContent=selectedDrug?.effect||'None';$('#heroItem').innerHTML=selectedDrug?`<img src="${selectedDrug.image}" alt="${selectedDrug.name}">`:'<span>?</span>';$('#addictionPercent').textContent=`${Math.min(100,amount)}%`;$('#meterFill').style.width=`${Math.min(100,amount)}%`;effects.innerHTML=active.length?active.map(e=>`<span class="effect">${e}</span>`).join(''):'<p class="empty">Choose a base product, then add ingredients.</p>';const base=selectedDrug?`<li class="base-drug"><img src="${selectedDrug.image}" alt=""><small>${selectedDrug.name}</small></li>`:'';mixList.innerHTML=base+(mix.length?mix.map((i,index)=>`<li data-mix-index="${index}" title="Click to remove ${i.name}"><img src="${i.image}" alt="${i.name}"><small>${i.name}</small></li>`).join(''):'')||'<li class="empty">No ingredients added.</li>';timeline.innerHTML=events.length?events.map((e,n)=>e.drug?`<article class="event"><p class="event-title">BASE: ${e.drug.name}</p><p class="change"><b>${e.drug.effect||'No base effect'}</b></p></article>`:`<article class="event"><p class="event-title">${String(n).padStart(2,'0')} - ${e.ingredient.name}</p>${e.changes.length?e.changes.map(([a,b])=>`<p class="change"><b>${a}</b><span class="arrow">→</span>${b}</p>`).join(''):`<p class="change"><b>+ ${e.base}</b> added to mix</p>`}</article>`).join(''):'<p class="empty">Your effect changes will show here.</p>'}
 drawCatalog();render();
+
+// Exact image files used by the Ingredients page on the Schedule 1 Wiki.
+const wikiIngredientImages={
+  Cuke:'https://static.wikia.nocookie.net/schedule-1/images/a/ae/Cuke_Icon.png/revision/latest/scale-to-width-down/64?cb=20250616234625',
+  Banana:'https://static.wikia.nocookie.net/schedule-1/images/3/31/Banana_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212129',
+  Paracetamol:'https://static.wikia.nocookie.net/schedule-1/images/2/23/Paracetamol_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212147',
+  Donut:'https://static.wikia.nocookie.net/schedule-1/images/0/05/Donut_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212203',
+  Viagor:'https://static.wikia.nocookie.net/schedule-1/images/7/72/Viagra_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212258',
+  'Mouth Wash':'https://static.wikia.nocookie.net/schedule-1/images/d/d5/Mouth_Wash_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212333',
+  'Flu Medicine':'https://static.wikia.nocookie.net/schedule-1/images/6/62/Flu_Medicine_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212355',
+  Gasoline:'https://static.wikia.nocookie.net/schedule-1/images/8/87/Gasoline_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212411',
+  'Energy Drink':'https://static.wikia.nocookie.net/schedule-1/images/6/6d/Energy_Drink_Icon.png/revision/latest/scale-to-width-down/64?cb=20250420141017',
+  'Motor Oil':'https://static.wikia.nocookie.net/schedule-1/images/1/17/Motor_Oil_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212450',
+  'Mega Bean':'https://static.wikia.nocookie.net/schedule-1/images/3/3f/Mega_Bean_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212514',
+  Chili:'https://static.wikia.nocookie.net/schedule-1/images/8/8b/Chili_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212531',
+  Battery:'https://static.wikia.nocookie.net/schedule-1/images/4/40/Battery_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212545',
+  Iodine:'https://static.wikia.nocookie.net/schedule-1/images/c/c0/Iodine_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212603',
+  Addy:'https://static.wikia.nocookie.net/schedule-1/images/d/d8/Addy_Icon.png/revision/latest/scale-to-width-down/64?cb=20250406212619',
+  'Horse Semen':'https://static.wikia.nocookie.net/schedule-1/images/f/f1/Horsejuice%28blurred%29.png/revision/latest/scale-to-width-down/64?cb=20250420151404'
+};
+ingredients.forEach(ingredient=>{ingredient.image=wikiIngredientImages[ingredient.name]||ingredient.image});
+drawCatalog();
+render();
