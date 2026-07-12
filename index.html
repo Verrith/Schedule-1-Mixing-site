@@ -1,24 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Schedule I Mix Lab</title>
+
+  <meta name="description" content="Create and test every Schedule I recipe and ingredient combination.">
+
   <link rel="icon" type="image/png" href="assets/Site-favicon-1.png">
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Schedule I Mix Lab</title><link rel="stylesheet" href="styles.css"></head>
-<body>
-  <main class="app">
-    <header><a class="game-logo" href="#"><img src="https://www.scheduleonegame.com/img/extended-logo.png" alt="Schedule I"></a><span>MIXING STATION · HYLAND POINT</span></header>
-    <section class="intro"><div><p class="eyebrow">PRODUCT RESEARCH TERMINAL</p><h1>MAKE YOUR<br><i>OWN MIX.</i></h1><p>Choose a base product, then combine any ingredients. The terminal calculates every effect in the order you add them.</p></div><div class="terminal-note"><b>TIP_01</b> Effects only change when the matching effect is already active.</div></section>
-    <section class="base-section"><div class="section-label"><p class="eyebrow">STEP 01</p><h2>Choose base product</h2></div><div class="drug-grid" id="drugGrid"></div></section>
-    <section class="station">
-      <div class="inventory"><div class="section-label"><p class="eyebrow">STEP 02</p><h2>Add ingredients</h2></div><div class="tool-row"><label>⌕ <input id="search" type="search" placeholder="Search inventory..."></label><button id="clearMix">Clear mix</button></div><div class="ingredient-grid" id="ingredientGrid"></div></div>
-      <aside class="results"><div class="result-head"><p class="eyebrow">CURRENT PRODUCT</p><span class="live">LIVE</span><h2 id="productName">No product selected</h2></div><div class="product-card"><div id="heroItem" class="hero-item">?</div><div><small>BASE EFFECT</small><strong id="baseEffect">None</strong></div><div><small>INGREDIENTS</small><strong id="ingredientTotal">0</strong></div></div><h3>Effects</h3><div class="effects" id="effects"><p class="empty">Select a product to start.</p></div><h3>Recipe</h3><ol class="recipe" id="mixList"><li class="empty">No ingredients added.</li></ol><div class="addictiveness"><div><span>Addictiveness</span><strong id="addictionPercent">0%</strong></div><div class="meter"><i id="meterFill"></i></div></div></aside>
-    </section>
-    <section class="changes"><div class="section-label"><p class="eyebrow">MIX LOG</p><h2>Effect transformations</h2></div><div class="timeline" id="timeline"><p class="empty">Changes will be logged here.</p></div></section>
-  </main>
-  <style>
-    .mix-flow{display:flex;align-items:center;gap:9px}.flow-slot{display:grid;justify-items:center;gap:7px;font-size:9px;color:#929a88;text-align:center}.selected-item,.mixing-bowl{width:59px;height:57px;border:2px solid #b5b9a2;border-radius:7px 7px 20px 20px;position:relative;overflow:hidden;background:#273024;display:grid;place-items:center}.selected-item{border-color:#586151;background:#20261d;border-radius:7px}.selected-item img{width:50px;height:50px;object-fit:contain}.mixing-bowl:before{content:'';position:absolute;top:-11px;left:14px;width:27px;height:11px;border:2px solid #b5b9a2;border-bottom:0}.mixing-bowl .liquid{position:absolute;bottom:0;left:0;width:100%;height:42%;background:#a4d34f}.mixing-bowl span{position:absolute;inset:15px 0;text-align:center;font-size:20px;color:#17200e}.mix-action{width:58px;height:37px;clip-path:polygon(0 50%,26% 0,100% 0,100% 100%,26% 100%);border:2px solid #4ca6d1;background:#245879;color:#ecf8ff;font:bold 10px Arial;cursor:pointer;padding:0 4px 0 10px}.mix-action i{display:block;font-style:normal;font-size:15px;line-height:10px}.mix-action.remove{clip-path:polygon(0 0,74% 0,100% 50%,74% 100%,0 100%);border-color:#e76a62;background:#742b2c;padding:0 10px 0 4px;color:#ffe8e2}.mix-action:disabled{opacity:.35;cursor:not-allowed}
-    @media(min-width:851px){.station{grid-template-columns:minmax(280px,.8fr) minmax(300px,1.05fr) minmax(300px,.95fr)}.mixer-visual{order:-1}.mix-flow{gap:12px}}
-    .station{grid-template-columns:minmax(350px,1.15fr) minmax(350px,.85fr)}.inventory{border-right:1px solid #56604c}.recipe{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;border:0}.recipe li{min-height:70px;border:1px solid #56604c;background:#20261d;display:grid;place-items:center;padding:5px;cursor:pointer;position:relative}.recipe li:not(.empty):before{content:'×';position:absolute;top:2px;right:6px;color:#fa7666;font-size:17px}.recipe li:hover{border-color:#ee7770;background:#3a2825}.recipe img{width:44px;height:44px}.recipe small{font:8px monospace;color:#aeb9a1;text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.recipe .empty{grid-column:1/-1;display:block;border:0;background:transparent;min-height:0;cursor:default}.recipe .base-drug{cursor:default;border-color:#7b9860}.recipe .base-drug:before{display:none}@media(max-width:850px){.station{grid-template-columns:1fr}.inventory{border-right:0;border-bottom:1px solid #56604c}}
-  </style>
-  <span id="selectedItem" hidden></span><span id="mixAction" hidden></span><span id="stepCount" hidden></span><i class="liquid" hidden></i>
-  <script src="script.js"></script>
-</body></html>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Schedule I Mix Lab">
+  <meta property="og:title" content="Schedule I Mix Lab">
+  <meta property="og:description" content="Create and test every ingredient and effect combination from Schedule I.">
+  <meta property="og:url" content="https://verrith.github.io/Schedule-1-Mixing-site/">
+  <meta property="og:image" content="https://verrith.github.io/Schedule-1-Mixing-site/assets/ingredients/schedule-1-logo.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter / Discord -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Schedule I Mix Lab">
+  <meta name="twitter:description" content="Create and test every ingredient and effect combination from Schedule I.">
+  <meta name="twitter:image" content="https://verrith.github.io/Schedule-1-Mixing-site/assets/ingredients/schedule-1-logo.webp">
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
